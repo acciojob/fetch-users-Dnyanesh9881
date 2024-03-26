@@ -5,15 +5,15 @@ import "./../styles/App.css";
 const App = () => {
   const [users, setUsers] = useState([]);
 
-  async function fetchUsers() {
-    console.log("axios in");
-    try {
-      const res = await axios.get("https://reqres.in/api/users");
-      console.log(res.data.data);
-      setUsers(res.data.data);
-    } catch (error) {
-      console.log(error);
-    }
+  function fetchUsers() {
+    axios.get("https://reqres.in/api/users")
+      .then((res) => {
+        console.log(res.data.data);
+        setUsers(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
